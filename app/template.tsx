@@ -42,7 +42,7 @@ function Tempalte({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
 
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer },
   } = theme.useToken();
 
   const handleMenuItemClcik = ({ key }: { key: string }) => {
@@ -83,26 +83,10 @@ function Tempalte({ children }: { children: React.ReactNode }) {
             }}
           />
         </Header>
-        <Content style={{ margin: '16px', position: 'relative' }}>
+        <Content style={{ position: 'relative' }}>
           <div
             style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0,
-              zIndex: 999,
-              pointerEvents: 'none',
-            }}
-          >
-            水印展示区域
-          </div>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+              margin: 16,
             }}
           >
             {children}
