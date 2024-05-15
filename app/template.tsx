@@ -9,7 +9,7 @@ import {
   MenuFoldOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Layout, Menu, theme, Button } from 'antd';
+import { Layout, Menu, theme, Button, Watermark, Avatar } from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -71,7 +71,10 @@ function Tempalte({ children }: { children: React.ReactNode }) {
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
+        <Header
+          className="page-header"
+          style={{ background: colorBgContainer }}
+        >
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -82,18 +85,24 @@ function Tempalte({ children }: { children: React.ReactNode }) {
               height: 64,
             }}
           />
-        </Header>
-        <Content style={{ position: 'relative' }}>
-          <div
-            style={{
-              margin: 16,
-            }}
-          >
-            {children}
+          <div className="userContainer">
+            <Avatar />
+            <span className="userName">秋名山Ae86</span>
           </div>
+        </Header>
+        <Content>
+          <Watermark content={'Tu Qun'}>
+            <div
+              style={{
+                margin: 16,
+              }}
+            >
+              {children}
+            </div>
+          </Watermark>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          Tu Qun ©{new Date().getFullYear()} Powered By Render
         </Footer>
       </Layout>
     </Layout>

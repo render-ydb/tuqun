@@ -1,1 +1,18 @@
 @import 'antd/dist/reset.css';
+
+.page-header {
+  display: flex;
+  padding: 0 !important;
+  padding-right: 16px !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header .userContainer {
+  display: flex;
+  align-items: center;
+}
+
+.page-header .userContainer .userName {
+  margin-left: 6px;
+}
