@@ -1,9 +1,8 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
-  DesktopOutlined,
   FileOutlined,
-  PieChartOutlined,
   TeamOutlined,
   UserOutlined,
   MenuUnfoldOutlined,
@@ -31,25 +30,24 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
+  getItem('图片', '1', <UserOutlined />, [
+    getItem('上传图片', '/image/upload'),
+    getItem('图片处理', '/image/handle'),
   ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [
-    getItem('Team 1', '6'),
-    getItem('Team 2', '8'),
-  ]),
-  getItem('Files', '9', <FileOutlined />),
 ];
 
 function Tempalte({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+
   const [collapsed, setCollapsed] = useState(false);
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const handleMenuItemClcik = ({ key }: { key: string }) => {
+    router.push(key);
+  };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -64,8 +62,10 @@ function Tempalte({ children }: { children: React.ReactNode }) {
         <div className="demo-logo-vertical"></div>
 
         <Menu
+          onClick={handleMenuItemClcik}
           theme="light"
           defaultSelectedKeys={['1']}
+          defaultOpenKeys={['1']}
           mode="inline"
           items={items}
         />
